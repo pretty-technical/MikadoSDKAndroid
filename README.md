@@ -34,10 +34,17 @@
 MikadoSDK is a software development kit (SDK) for Android gaming apps that implement main features as login, sign up, get the game list and launch games. The SDK simplifies the development of new gaming apps and manage all the backend connections.   
 
 ## Install
-
-To install the SDK you just add on your `build.gradle` file the following: 
+First, add the following lines in your **build.gradle(app)**:
+maven {
+    url  "https://dl.bintray.com/pretty-technical/MikadoSDKAndroid"
+}
+then, add the following lines in your project **build.gradle(Module)**:
 - `implementation 'com.prettytechnical:mikado-sdk:0.0.1'`
 - `implementation "org.koin:koin-core:2.1.6"`
+and then sync.
+
+Tip:
+>This will automatically validate if the user's session has expired.
 
 ## Usage
 
@@ -51,7 +58,8 @@ Also, the SDK have a group of use cases for easy access, these are:
 - `Mikado.instance.player`
 - `Mikado.instance.arcade`
 
-Every method used, except `initialize`, needs to be wrap in a Coroutine Scope. For more information about Coroutine, check the external library section. 
+Tip:
+>Every method used, except **initialize**, needs to be wrap in a Coroutine Scope. For more information about Coroutine, check the external library section. 
 
 ## Architecture
 The project is base on Clean Architecture, it includes the Use Case layer, Data layer and Domain Layer. Additionally, there is a Core layer where all the base implementations are.  
