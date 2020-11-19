@@ -116,7 +116,7 @@ The project is base on Clean Architecture, it includes the Use Case layer, Data 
 The login module gets and validates the user's credencials and return the user profile information and access token or an exceptions if the credentials are wrong. 
 
 To implement login in your project, just with `Mikado.instance.player.logIn(email: String, password: String, result: (Throwable) -> Unit)` where it just need the email and password input by the user. To handle the exceptions, is necessary to execute the result, for example:
-``` Java
+``` Kotlin
 { result ->
     try {
         throw result
@@ -138,7 +138,7 @@ When the login is successful, the method will:
 
 - Save the email, password, token, user Id in the `Preference`  
 - Set the user information in the observable `userInformation`, which to be use in the app, you should called as:
-``` Java
+``` Kotlin
 Mikado.instance.player.onUserInformationChanged = { userInformation ->
     //ADD YOUR LOGIC HERE
 }
@@ -150,7 +150,7 @@ Mikado.instance.player.onUserInformationChanged = { userInformation ->
 The sign up module gets the user information and return the user profile information and access token or an exceptions if something went wrong. 
 
 To implement the sign up in your project, just with `Mikado.instance.player.signUp(signUpParam: SignUpParam, result: (Throwable) -> Unit)` where it just need the user information as `SignUpParam` model. To handle the exceptions, is necessary to execute the result, for example:
-``` Java
+``` Kotlin
 { result ->
     try {
         throw result
@@ -194,7 +194,7 @@ When the sign up is successful, the method will call the login method with the e
 The game list module is for get the list of games available to the user. 
 
 To implement the game list in your project, just with `Mikado.instance.arcade.getGameList(result: (Throwable) -> Unit)` where it does not request any parameters. To handle the exceptions, is necessary to execute the result, for example:
-``` Java
+``` Kotlin
 { result ->
     try {
         throw result
@@ -243,7 +243,7 @@ The launch game method could return the following exceptions:
 #### Success Result
 
 When the launch game is successful, it will return the game url to access it in a observable that can be called as:
-``` Java
+``` Kotlin
 Mikado.instance.arcade.gameUseCase.onGameURLChanged = { gameURL ->
     //ADD YOUR LOGIC HERE
 }
