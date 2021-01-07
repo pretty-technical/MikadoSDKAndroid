@@ -36,7 +36,7 @@ MikadoSDK is a software development kit (SDK) for Android gaming apps that imple
 ## Install
 
 To install the SDK you just add on your `build.gradle` file the following: 
-- `implementation 'com.prettytechnical:mikado-sdk:0.0.4'`
+- `implementation 'com.prettytechnical:mikado-sdk:0.0.5'`
 - `implementation "org.koin:koin-core:2.1.6"`
 
 ## Usage
