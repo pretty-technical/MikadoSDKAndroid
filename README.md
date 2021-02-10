@@ -25,6 +25,8 @@
 
     - [Game Launch](#Game-Launch)
 
+    - [Balance Amount](#Balance-Amount)
+
 - [External Library](#external-library)
 
 
@@ -35,9 +37,18 @@ MikadoSDK is a software development kit (SDK) for Android gaming apps that imple
 
 ## Install
 
+First, add the following lines in your build.gradle(app):
+```
+maven {
+    url  "https://dl.bintray.com/pretty-technical/MikadoSDKAndroid"
+}
+```
+
 To install the SDK you just add on your `build.gradle` file the following: 
-- `implementation 'com.prettytechnical:mikado-sdk:0.0.5'`
+- `implementation 'com.prettytechnical:mikado-sdk:0.0.6'`
 - `implementation "org.koin:koin-core:2.1.6"`
+
+Finally, sync.
 
 ## Usage
 
@@ -245,6 +256,34 @@ Mikado.instance.arcade.onGameURLChanged = { gameURL ->
 ```
 You should use a  WebView to lauch the game.
 
+### Balance Amount
+The balance amount module is used to get the user amount of points. 
+
+To implement the launch game in your project, just with `Mikado.instance.player.getBalance(result: (Throwable) -> Unit?)`. To handle the exceptions, is necessary to execute the result, for example:
+``` Java
+{ result ->
+    try {
+        throw result
+    } catch (ex: Throwable) {
+        print(ex)
+    }
+}
+```
+#### Exceptions
+
+The balance method could return the following exceptions:
+
+- `internalError`
+- `invalidCredentials`
+
+#### Success Result
+
+When getting the balance is successful, it will return the amount where it can be access by an observable, which can be called as:
+``` Java
+Mikado.instance.player.onBalanceChanged = { balance ->
+    //ADD YOUR LOGIC HERE
+}
+```
 ## External Library
 
 | Plugin | Version | Site |
@@ -252,6 +291,3 @@ You should use a  WebView to lauch the game.
 | Retrofit | 2.9.0 | https://square.github.io/retrofit/ |
 | Koin | 2.1.6 | https://github.com/InsertKoinIO/koin |
 | Coroutine| 1.3.9 | https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html|
-
-
-
